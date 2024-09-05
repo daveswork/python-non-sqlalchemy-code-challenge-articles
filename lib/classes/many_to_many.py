@@ -68,9 +68,11 @@ class Author:
             return list(set([magazine.category for magazine in self.magazines()]))
 
 class Magazine:
+    all = []
     def __init__(self, name, category):
         self.name = name
         self.category = category
+        Magazine.all.append(self)
 
     @property
     def name(self):
@@ -120,3 +122,15 @@ class Magazine:
             return more_than_two
         else:
             return None
+        
+    @classmethod
+    def top_publisher(cls):
+        if len(cls.all) == 0:
+            return None
+        maxed_magazine = None
+        maxed_count = 0
+        for magazine in cls.all:
+            if len(magazine.articles()) > maxed_count:
+                maxed_count = len(magazine.articles())
+                maxed_magazine = magazine
+        return maxed_magazine
