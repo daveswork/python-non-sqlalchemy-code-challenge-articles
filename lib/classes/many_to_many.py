@@ -17,7 +17,7 @@ class Article:
         if isinstance(new_title, str) and 50 > len(new_title) > 5 and not hasattr(self, "title"):
             self._title = new_title
         else:
-            raise Exception("Title is invalid")
+            raise Exception("Title is invalid.")
     
     @property
     def author(self):
@@ -28,7 +28,7 @@ class Article:
         if isinstance(new_author, Author):
             self._author = new_author
         else:
-            raise Exception()
+            raise Exception("Author is invalid.")
     
     @property
     def magazine(self):
@@ -39,7 +39,7 @@ class Article:
         if isinstance(new_magazine, Magazine):
             self._magazine = new_magazine
         else:
-            raise Exception()
+            raise Exception("Magazine is invalid.")
         
 class Author:
     def __init__(self, name):
@@ -53,6 +53,8 @@ class Author:
     def name(self, new_name):
         if isinstance(new_name, str) and len(new_name) > 0  and not hasattr(self, 'name'):
             self._name = new_name
+        else:
+            raise Exception("Invalid name.")
 
     def articles(self):
         return [ article for article in Article.all if article.author is self ]
