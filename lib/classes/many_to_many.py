@@ -134,7 +134,8 @@ class Magazine:
             return more_than_two
         else:
             return None
-        
+
+    # Bonus: Aggregate and Association Method   
     @classmethod
     def top_publisher(cls):
         if len(cls.all) == 0:
