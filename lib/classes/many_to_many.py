@@ -14,8 +14,10 @@ class Article:
     
     @title.setter
     def title(self, new_title):
-        if isinstance(new_title, str) and len(new_title) > 0 and not hasattr(self, "title"):
+        if isinstance(new_title, str) and 50 > len(new_title) > 5 and not hasattr(self, "title"):
             self._title = new_title
+        else:
+            raise Exception("Title is invalid")
     
     @property
     def author(self):
@@ -25,6 +27,8 @@ class Article:
     def author(self, new_author):
         if isinstance(new_author, Author):
             self._author = new_author
+        else:
+            raise Exception()
     
     @property
     def magazine(self):
@@ -34,6 +38,8 @@ class Article:
     def magazine(self, new_magazine):
         if isinstance(new_magazine, Magazine):
             self._magazine = new_magazine
+        else:
+            raise Exception()
         
 class Author:
     def __init__(self, name):
