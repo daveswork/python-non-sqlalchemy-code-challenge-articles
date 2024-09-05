@@ -90,6 +90,8 @@ class Magazine:
     def name(self, new_name):
         if isinstance(new_name, str) and (2<= len(new_name) <= 16):
             self._name = new_name
+        else:
+            raise Exception("Invalid name.")
 
     @property
     def category(self):
@@ -99,6 +101,8 @@ class Magazine:
     def category(self, new_category):
         if isinstance(new_category, str) and len(new_category) > 0:
             self._category = new_category
+        else:
+            raise Exception("Invalid category")
 
     def articles(self):
         return [ article for article in Article.all if article.magazine is self]
